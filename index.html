@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Video Player</title>
+  </head>
+
+  <body>
+    <!-- Video Container -->
+    <div class="video-container">
+      <!-- Video -->
+      <video src=""></video>
+
+      <!-- Choose a Movie -->
+      <div class="choose-movie">
+        <input type="file" id="movie" accept=".mp4">
+        <label for="movie">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+            <line x1="7" y1="2" x2="7" y2="22"></line>
+            <line x1="17" y1="2" x2="17" y2="22"></line>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <line x1="2" y1="7" x2="7" y2="7"></line>
+            <line x1="2" y1="17" x2="7" y2="17"></line>
+            <line x1="17" y1="17" x2="22" y2="17"></line>
+            <line x1="17" y1="7" x2="22" y2="7"></line>
+          </svg>
+        </label>
+      </div>
+
+      <div class="controls-container">
+        <!-- Progress Controls -->
+        <div class="progress-controls">
+          <div class="progress-bar">
+            <div class="watched-bar"></div>
+            <div class="playhead"></div>
+          </div>
+
+          <!-- Video Time -->
+          <div class="time-remaining">
+            00:00
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <!-- Play & Pause -->
+          <button class="play-pause">
+            <svg viewBox="0 0 24 24" width="24" height="24" class="playing">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+
+            <svg viewBox="0 0 24 24" width="24" height="24" class="paused">
+              <rect x="6" y="4" width="4" height="16"></rect>
+              <rect x="14" y="4" width="4" height="16"></rect>
+            </svg>
+          </button>
+
+          <!-- Go Back -->
+          <button class="rewind">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <polygon points="11 19 2 12 11 5 11 19"></polygon>
+              <polygon points="22 19 13 12 22 5 22 19"></polygon>
+            </svg>
+          </button>
+
+          <!-- Go Forward -->
+          <button class="fast-forward">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <polygon points="13 19 22 12 13 5 13 19"></polygon>
+              <polygon points="2 19 11 12 2 5 2 19"></polygon>
+            </svg>
+          </button>
+
+          <!-- Volume -->
+          <button class="volume">
+            <svg viewBox="0 0 24 24" width="24" height="24" class="fullVolume">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            </svg>
+
+            <svg viewBox="0 0 24 24" width="24" height="24" class="muted">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+          </button>
+          
+          <!-- <input type="range" class="current-volume" min="0" max="100" step="1" value="100"> -->
+          <!-- <div class="change-volume">
+            <div class="current-volume"></div>
+            <div class="volume-playhead"></div>
+          </div> -->
+
+          <p style="width: 100%;"></p>
+
+          <!-- Full Screen -->
+          <button class="full-screen">
+            <svg viewBox="0 0 24 24" width="24" height="24" class="full">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+            </svg>
+
+            <svg viewBox="0 0 24 24" width="24" height="24" class="mini">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
