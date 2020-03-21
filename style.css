@@ -131,7 +131,9 @@ body{
 
 /* Video Container -> Controls -> Volume Range */
 .video-container .controls .volume-range{
+  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
   height: 5px;
   background: #e31221;
   outline: none;
@@ -142,7 +144,6 @@ body{
 
 .video-container .controls .volume-range::-webkit-slider-thumb{
   -webkit-appearance: none;
-  appearance: none;
   width: 15px;
   height: 15px;
   border-radius: 50%;
