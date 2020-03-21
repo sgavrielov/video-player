@@ -1,4 +1,4 @@
-# Simple video player that builded with vanilla js (ES6)
+# video player that builded with vanilla js (ES6)
 
 ![Screenshot](./screenshots/screenshot.png)
 
