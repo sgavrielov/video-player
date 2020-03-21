@@ -151,7 +151,8 @@ body{
 
 /* Media */
 @media (max-width: 414px) { 
-  .video-container .controls .volume-range{
+  .video-container .controls .volume-range,
+  .video-container .controls-container .controls .help{
     display: none;
   }
 }

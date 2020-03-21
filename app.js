@@ -1,18 +1,40 @@
+// Video Container
 const videoContainer = document.querySelector('.video-container')
+
+// Video Controls Container
 const controlsContainer = document.querySelector('.video-container .controls-container')
+
+// Video Controls
+const controls = document.querySelector('.video-container .controls-container .controls')
+
+// The Video
 const video = videoContainer.querySelector('video')
 
+// Play & Pause Button Container
 const playPauseBtn = document.querySelector('.video-container .controls .play-pause')
+
+// Rewind Button
 const rewindBtn = document.querySelector('.video-container .controls .rewind')
+
+// Fast Forward Button
 const fastForwardBtn = document.querySelector('.video-container .controls .fast-forward')
+
+// Volume Button
 const volumeBtn = document.querySelector('.video-container .controls .volume')
+
+// Volume Range Button
 const volumeRange = document.querySelector('.video-container .controls .volume-range')
+
+// Full Screen Button Container
 const fullScreenBtn = document.querySelector('.video-container .controls .full-screen')
 const maximizeBtn = fullScreenBtn.querySelector('.maximize')
 const minimizeBtn = fullScreenBtn.querySelector('.minimize')
 
+// Progress Bar
 const progressBar = document.querySelector('.video-container .progress-controls .progress-bar')
 const watchedBar = document.querySelector('.video-container .progress-controls .progress-bar .watched-bar')
+
+// Time Remaining
 const timeLeft = document.querySelector('.video-container .progress-controls .time-remaining')
 
 watchedBar.style.width = '0%'
@@ -39,7 +61,27 @@ document.addEventListener('keydown', e => {
   if(e.keyCode === 77 || e.code === 'KeyM'){
     toggleMute()
   }
+
+  // Start over
+  if(e.keyCode === 96 || e.code === 'Numpad0'){
+    video.currentTime = 0
+  }
+
+  // Decrease the volume
+  if(e.keyCode === 40 || e.code === 'ArrowDown'){
+    video.volume -= 0.10
+    let t = video.volume.toString().slice(2, 3)
+    volumeRange.value = (t * 100) / 10
+  }
+
+  // Increase  the volume
+  if(e.keyCode === 38 || e.code === 'ArrowUp'){
+    video.volume += 0.10
+    let t = video.volume.toString().slice(2, 3)
+    volumeRange.value = (t * 100) / 10
+  }
 })
+
 
 document.addEventListener('fullscreenchange', () => {
   if (!document.fullscreenElement) {
@@ -152,3 +194,8 @@ volumeRange.addEventListener('change', () => {
 
 // Full Screen Button
 fullScreenBtn.addEventListener('click', toggleFullScreen)
+
+// Video
+video.addEventListener('click', playPause)
+
+video.addEventListener('dblclick', toggleFullScreen);
