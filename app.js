@@ -2,31 +2,31 @@
 const videoContainer = document.querySelector('.video-container')
 
 // Video Controls Container
-const controlsContainer = document.querySelector('.video-container .controls-container')
+const controlsContainer = videoContainer.querySelector('.controls-container')
 
 // Video Controls
-const controls = document.querySelector('.video-container .controls-container .controls')
+const controls = controlsContainer.querySelector('.controls')
 
 // The Video
 const video = videoContainer.querySelector('video')
 
 // Play & Pause Button Container
-const playPauseBtn = document.querySelector('.video-container .controls .play-pause')
+const playPauseBtn = controls.querySelector('.play-pause')
 
 // Rewind Button
-const rewindBtn = document.querySelector('.video-container .controls .rewind')
+const rewindBtn = controls.querySelector('.rewind')
 
 // Fast Forward Button
-const fastForwardBtn = document.querySelector('.video-container .controls .fast-forward')
+const fastForwardBtn = controls.querySelector('.fast-forward')
 
 // Volume Button
-const volumeBtn = document.querySelector('.video-container .controls .volume')
+const volumeBtn = controls.querySelector('.volume')
 
 // Volume Range Button
-const volumeRange = document.querySelector('.video-container .controls .volume-range')
+const volumeRange = controls.querySelector('.volume-range')
 
 // Full Screen Button Container
-const fullScreenBtn = document.querySelector('.video-container .controls .full-screen')
+const fullScreenBtn = controls.querySelector('.full-screen')
 const maximizeBtn = fullScreenBtn.querySelector('.maximize')
 const minimizeBtn = fullScreenBtn.querySelector('.minimize')
 
@@ -197,5 +197,4 @@ fullScreenBtn.addEventListener('click', toggleFullScreen)
 
 // Video
 video.addEventListener('click', playPause)
-
 video.addEventListener('dblclick', toggleFullScreen);
