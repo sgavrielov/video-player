@@ -1,6 +1,6 @@
 # video player that builded with vanilla js (ES6)
 
-![Screenshot](./screenshots/screenshot.png)
+![Screenshot](./screenshots/desktop.png)
 
 ## Acknowledgements
 
