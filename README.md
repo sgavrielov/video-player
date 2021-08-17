@@ -4,10 +4,11 @@
 
 ### Supported Browsers
 
-* Chrome
-* Firefox
+- Chrome
+- Firefox
+- Microsoft Edge
 
 ## Acknowledgements
 
-* Icons from: https://feathericons.com/
-* Font: https://fonts.google.com/
+- Icons from: https://feathericons.com/
+- Font: https://fonts.google.com/
