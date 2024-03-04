@@ -1,12 +1,6 @@
-# video player that build with vanilla js (ES6)
+# Video Player
 
 ![Screenshot](./screenshots/desktop.png)
-
-### Supported Browsers
-
-- Chrome
-- Firefox
-- Microsoft Edge
 
 ## Acknowledgements
 

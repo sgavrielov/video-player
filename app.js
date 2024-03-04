@@ -48,34 +48,34 @@ document.addEventListener('keydown', e => {
   displayControls()
   
   // Play & Pause
-  if(e.keyCode === 32 || e.code === 'Space'){
+  if(e.key === ' ' || e.code === 'Space'){
     playPause()
   }
 
   // Full Screen & Minimize Full Screen
-  if(e.keyCode === 70 || e.code === 'KeyF'){
+  if(e.key === 'f' || e.code === 'KeyF'){
     toggleFullScreen()
   }
 
   // Mute & Unmute
-  if(e.keyCode === 77 || e.code === 'KeyM'){
+  if(e.key === 'm' || e.code === 'KeyM'){
     toggleMute()
   }
 
   // Start over
-  if(e.keyCode === 96 || e.code === 'Numpad0'){
+  if(e.key === '0' || e.code === 'Numpad0'){
     video.currentTime = 0
   }
 
   // Decrease the volume
-  if(e.keyCode === 40 || e.code === 'ArrowDown'){
+  if(e.key === 'ArrowDown'){
     video.volume -= 0.10
     let t = video.volume.toString().slice(2, 3)
     volumeRange.value = (t * 100) / 10
   }
 
   // Increase  the volume
-  if(e.keyCode === 38 || e.code === 'ArrowUp'){
+  if(e.key === 'ArrowUp' || e.code === 'ArrowUp'){
     video.volume += 0.10
     let t = video.volume.toString().slice(2, 3)
     volumeRange.value = (t * 100) / 10
