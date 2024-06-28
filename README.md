@@ -4,4 +4,4 @@
 
 ## Acknowledgements
 
-- Icons from: https://feathericons.com/
+- Icons: [Feather](https://feathericons.com)

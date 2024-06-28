@@ -9,8 +9,10 @@
 
   <body>
     <!-- Video Container -->
-    <div class="video-container">
-      <video src="bbb.mp4"></video>
+    <div class="video-container caption">
+      <video src="assets/Video.mp4">
+        <track kind="captions" srclang="en" src="assets/subtitles.vtt" />
+      </video>
 
       <!-- Controls Container -->
       <div class="controls-container">
@@ -88,6 +90,16 @@
           />
 
           <p style="width: 90%; height: 100%"></p>
+
+          <button class="caption">
+            <svg viewBox="0 0 24 24" class="caption">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
+            </svg>
+          </button>
 
           <!-- Full Screen -->
           <button class="full-screen">
