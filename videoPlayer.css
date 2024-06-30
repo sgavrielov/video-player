@@ -1,3 +1,12 @@
+:root {
+  --video-player-primary-clr: hsl(356, 85%, 48%);
+  --video-player-icon-clr: hsl(0, 0%, 100%);
+  --video-progress-bar-bg: hsl(0, 0%, 36%);
+  --video-container-bg: hsl(0, 0%, 0%);
+  --video-timeline-bga: hsla(0, 0%, 39%, 0.5);
+  --video-timeline-bg: hsla(0, 0%, 39%);
+}
+
 *,
 *::before,
 *::after {
@@ -6,172 +15,300 @@
   padding: 0;
 }
 
-/* body {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: #000000;
-  font-family: sans-serif;
-} */
-
-/* Video Container */
-.video-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  overflow: hidden;
-  font-family: inherit;
-}
-
-/* Video Container -> Video */
-.video-container video {
-  width: 100%;
-}
-
-/* Video Container -> Controls Container */
-.video-container .controls-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 1vmin;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
-  transition: opacity 300ms linear;
-}
-
-/* Video Container -> Controls Container -> Timeline */
-.video-container .controls-container .progress-controls {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-}
-
-/* Video Container -> Controls Container -> Timeline -> Progress Bar */
-.video-container .controls-container .progress-controls .progress-bar {
+.videoContainer {
+  position: relative;
   width: 90%;
-  height: 5px;
-  background: #5b5b5b;
+  max-width: 1000px;
   display: flex;
-  align-items: center;
-  cursor: pointer;
+  justify-content: center;
+  margin-inline: auto;
+  background-color: var(--video-container-bg);
+  transition: width 150ms ease-in-out;
 }
 
-/* Video Container -> Controls Container -> Timeline -> Progress Bar -> Watched Bar */
-.video-container
-  .controls-container
-  .progress-controls
-  .progress-bar
-  .watched-bar {
-  background: #e31221;
-  height: 110%;
-  width: 0%;
-  display: inline-block;
-  transition: all 200ms;
-}
-
-/* Video Container -> Controls Container -> Timeline -> Progress Bar -> Playhead */
-.video-container
-  .controls-container
-  .progress-controls
-  .progress-bar
-  .playhead {
-  background: #e31221;
-  height: 1vw;
-  width: 1vw;
-  min-width: 13px;
-  min-height: 13px;
-  border-radius: 50%;
-  display: inline-block;
-  transform: translateX(-50%);
-}
-
-/* Video Container -> Controls Container -> Timeline -> Time Remaining */
-.video-container .controls-container .progress-controls .time-remaining {
-  margin: 0 1vw;
-}
-
-/* Video Container -> Controls */
-.video-container .controls {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Video Container -> Controls -> Buttons */
-.video-container .controls button {
-  background: none;
-  outline: none;
-  box-shadow: none;
-  border: none;
-  width: 4vw;
-  height: 4vw;
-  min-width: 30px;
-  min-height: 30px;
-  margin: 0 1vw;
-  cursor: pointer;
-  user-select: none;
-  transform: scale(0.98);
-}
-
-/* Video Container -> Controls -> Buttons -> svg */
-.video-container .controls button svg {
+.videoContainer svg {
   fill: none;
-  stroke: #ffffff;
+  stroke: currentColor;
   width: 100%;
   height: 100%;
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: all 0.5s;
 }
 
-.video-container.caption .controls button.caption {
-  border-bottom: 1px solid #e31221;
+.videoContainer video {
+  width: 100%;
 }
 
-.video-container .controls button:hover svg {
-  stroke: #e31221;
-  transform: scale(1.5);
+.videoControlsContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  z-index: 1;
+  color: var(--video-player-icon-clr);
+  transition: opacity 150ms linear;
 }
 
-/* Video Container -> Controls -> Volume Range */
-.video-container .controls .volume-range {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  height: 5px;
-  background: #e31221;
-  outline: none;
+.videoControlsContainer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  aspect-ratio: 10 / 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.videoContainer:hover .videoControlsContainer,
+.videoContainer:focus-within .videoControlsContainer,
+.videoContainer.paused .videoControlsContainer {
+  opacity: 1;
+}
+
+.videoControlsContainer .timelineContainer {
+  height: 7px;
+  margin-inline: 0.5rem;
   cursor: pointer;
-  border-radius: 7px;
-  transition: all 0.5s;
+  display: flex;
+  align-items: center;
 }
 
-.video-container .controls .volume-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 15px;
-  height: 15px;
+.videoControlsContainer .timelineContainer .timeline {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background-color: var(--video-timeline-bga);
+  transition: height 150ms ease-in-out;
+}
+
+.videoControlsContainer .timelineContainer .timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: calc(100% - var(--preview-position) * 100%);
+  background-color: var(--video-timeline-bg);
+  display: none;
+}
+
+.videoControlsContainer .timelineContainer .timeline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: calc(100% - var(--progress-position) * 100%);
+  background-color: var(--video-player-primary-clr);
+}
+
+.videoControlsContainer .timelineContainer .timeline .thumbIndicator {
+  --scale: 0;
+  position: absolute;
+  height: 200%;
+  top: -50%;
+  transform: translateX(-50%) scale(var(--scale));
+  left: calc(var(--progress-position) * 100%);
+  background-color: var(--video-player-primary-clr);
   border-radius: 50%;
-  background: #ffffff;
+  aspect-ratio: 1 / 1;
+  transition: transform 150ms ease-in-out;
 }
 
-/* Media */
-@media (max-width: 414px) {
-  .video-container .controls .volume-range,
-  .video-container .controls-container .controls .help {
-    display: none;
+.videoContainer.scrubbing,
+.timelineContainer:hover .timeline::before {
+  display: block;
+}
+
+.videoContainer.scrubbing .thumbIndicator,
+.timelineContainer:hover .thumbIndicator {
+  --scale: 1;
+}
+
+.videoContainer.scrubbing .timeline,
+.timelineContainer:hover .timeline {
+  height: 100%;
+}
+
+.timelineContainer .timeline .previewImg {
+  position: absolute;
+  height: 100px;
+  aspect-ratio: 16 / 9;
+  top: -1rem;
+  transform: translate(-50%, -100%);
+  left: calc(var(--preview-position) * 100%);
+  border-radius: 0.25rem;
+  border: 1px solid var(--video-player-icon-clr);
+  display: none;
+}
+
+.videoContainer.scrubbing.timeline .previewImg,
+.timelineContainer:hover .timeline .previewImg {
+  display: block;
+}
+
+.videoContainer .thumbnailImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.videoContainer.scrubbing .thumbnailImg {
+  display: block;
+}
+
+.videoControlsContainer .controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+}
+
+.videoControlsContainer .controls button {
+  width: 3vw;
+  height: 3vw;
+  min-width: 30px;
+  min-height: 30px;
+  border: none;
+  background: none;
+  color: var(--video-player-icon-clr);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transform: scale(0.9);
+  transition: transform 150ms linear;
+}
+
+.videoControlsContainer .controls button:hover {
+  transform: scale(1);
+  color: var(--video-player-primary-clr);
+}
+
+.videoControlsContainer .controls button.wideBtn {
+  width: 4vw;
+}
+
+.volumeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.volumeContainer .volumeSlider {
+  background: transparent;
+  width: 0;
+  transform-origin: left;
+  transform: scaleX(0%);
+  transition: all 250ms ease-in-out;
+}
+
+.volumeContainer:hover .volumeSlider,
+.volumeContainer:focus-within .volumeSlider {
+  width: 100px;
+  transform: scaleX(1);
+}
+
+.volumeSlider::-moz-range-progress {
+  background: red;
+}
+
+.volumeSlider::-moz-range-track {
+  background: gray;
+}
+
+.volumeSlider::-ms-fill-lower {
+  background: aqua;
+}
+
+.volumeSlider::-ms-fill-upper {
+  background: yellow;
+}
+
+.volumeHighIcon,
+.volumeLowIcon,
+.volumeMutedIcon {
+  display: none;
+}
+
+.videoContainer[data-volume-level="high"] .volumeHighIcon {
+  display: block;
+}
+
+.videoContainer[data-volume-level="low"] .volumeLowIcon {
+  display: block;
+}
+
+.videoContainer[data-volume-level="muted"] .volumeMutedIcon {
+  display: block;
+}
+
+.durationContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+
+.videoContainer.captions .captionsBtn {
+  border-bottom: 3px solid var(--video-player-primary-clr);
+}
+
+.videoContainer.paused .pauseIcon {
+  display: none;
+}
+
+.videoContainer:not(.paused) .playIcon {
+  display: none;
+}
+
+.videoContainer.theater,
+.videoContainer.fullScreen {
+  max-width: initial;
+  width: 100%;
+}
+
+.videoContainer.theater {
+  max-height: 85vh;
+}
+
+.videoContainer.fullScreen {
+  max-height: 100vh;
+}
+
+.videoContainer.theater .wideIcon {
+  display: none;
+}
+
+.videoContainer:not(.theater) .tallIcon {
+  display: none;
+}
+
+.videoContainer.fullScreen .maximizeIcon {
+  display: none;
+}
+
+.videoContainer:not(.fullScreen) .minimizeIcon {
+  display: none;
+}
+
+@media screen and (max-width: 490px) {
+  button.miniPlayerBtn,
+  button.theaterBtn,
+  input.volumeSlider {
+    display: none !important;
   }
 }
