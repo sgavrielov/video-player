@@ -119,6 +119,7 @@
   margin: 0 1vw;
   cursor: pointer;
   user-select: none;
+  color: white;
   transform: scale(0.98);
 }
 
