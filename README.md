@@ -1,6 +1,6 @@
 # Video Player
 
-> Note: Currently, the full screen version doesn't support all functionalities
+<!-- > Note: Currently, the full screen version doesn't support all functionalities -->
 
 **This video player includes mouse, keyboard, and tab accessibility**
 
@@ -15,7 +15,7 @@
 - preview image
 - thumbnail image
 - timeline
-  - timeline scrubbing
+  <!-- - timeline scrubbing -->
 - video speed
 
 ## Keyboard Shortcuts
