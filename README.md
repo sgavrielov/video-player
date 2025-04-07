@@ -1,7 +1,5 @@
 # Video Player
 
-<!-- > Note: Currently, the full screen version doesn't support all functionalities -->
-
 **This video player includes mouse, keyboard, and tab accessibility**
 
 ## Features
@@ -15,8 +13,8 @@
 - preview image
 - thumbnail image
 - timeline
-  <!-- - timeline scrubbing -->
 - video speed
+- quality selector (e.g. 720p / 540p)
 
 ## Keyboard Shortcuts
 

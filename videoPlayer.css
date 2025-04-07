@@ -175,8 +175,8 @@
 }
 
 .videoControlsContainer .controls button {
-  width: 3vw;
-  height: 3vw;
+  width: 2.5vw;
+  height: 2.5vw;
   min-width: 30px;
   min-height: 30px;
   border: none;
@@ -198,7 +198,7 @@
 }
 
 .videoControlsContainer .controls button.wideBtn {
-  width: 4vw;
+  width: 2.5vw;
 }
 
 .volumeContainer {
@@ -303,6 +303,54 @@
 
 .videoContainer:not(.fullScreen) .minimizeIcon {
   display: none;
+}
+
+.quality {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.qualityToggleBtn {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.qualityOptions {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 110%;
+  left: 0;
+  background: #222;
+  padding: 6px;
+  border-radius: 4px;
+  gap: 4px;
+  z-index: 10;
+}
+
+.qualityOptions button {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.qualityOptions button:hover {
+  background: #666;
+}
+
+/* Show on hover */
+.quality:hover .qualityOptions {
+  display: flex;
 }
 
 @media screen and (max-width: 490px) {

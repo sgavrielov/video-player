@@ -20,6 +20,8 @@ const captionsBtn = videoControls.querySelector(".captionsBtn");
 const speedBtn = videoControls.querySelector(".speedBtn");
 const previewImg = videoControlsContainer.querySelector(".previewImg");
 const thumbnailImg = videoContainer.querySelector(".thumbnailImg");
+const changeQ720 = videoContainer.querySelector(".changeQ-720");
+const changeQ540 = videoContainer.querySelector(".changeQ-540");
 let isScrubbing = false;
 let wasPaused = false;
 
@@ -81,6 +83,20 @@ document.addEventListener("mousemove", (e) => {
   if (isScrubbing) handleTimelineUpdate(e);
 });
 
+changeQ720.addEventListener("click", (e) => {
+  let lastTime = video.currentTime;
+  video.src = "/assets/video-720.mp4";
+  video.currentTime = lastTime;
+  video.play();
+});
+
+changeQ540.addEventListener("click", (e) => {
+  let lastTime = video.currentTime;
+  video.src = "/assets/video-540.mp4";
+  video.currentTime = lastTime;
+  video.play();
+});
+
 function toggleScrubbing(e) {
   const rect = timelineContainer.getBoundingClientRect();
   const percent = Math.min(Math.max(0, e.x - rect.x), rect.width) / rect.width;
@@ -105,7 +121,7 @@ function handleTimelineUpdate(e) {
     Math.min(Math.max(0 + 100, e.x - rect.x), rect.width - 100) / rect.width;
   const previewImgNumber = Math.max(
     1,
-    Math.floor((percent * video.duration) / 10)
+    Math.floor((percent * video.duration) / 5)
   );
   const previewImgSrc = `/assets/previewImgs/preview${previewImgNumber}.jpg`;
   previewImg.src = previewImgSrc;
@@ -196,8 +212,6 @@ video.addEventListener("volumechange", () => {
   }
 
   videoContainer.dataset.volumeLevel = volumeLevel;
-  // video.volume;
-  // video.muted;
 });
 
 function toggleMute() {
